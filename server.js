@@ -1,6 +1,7 @@
 /** Start server for spotify app. */
 
-const app = require('./authorization_code/app');
+// app will be using client credentials to authorize
+const app = require('./client_credentials/app');
 const { PORT } = require('./config');
 
 app.listen(PORT, function() {
