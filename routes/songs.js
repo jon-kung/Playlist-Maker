@@ -6,8 +6,8 @@ const APIError = require('../helpers/APIError');
 const fetchSong = require('../helpers/fetchSong');
 const generatePlaylist = require('../helpers/generatePlaylist');
 
-// This get SONG route should return json displaying {song: name, songID, artist, artistID}
-// Currently works but more accurate when both song name and artist are passed
+// This get SONG route first gets songData like so {song: name, songID, artist, artistID}
+// then passes the artistID+songID to generate a playlist [{song, artist, albumIMG}]
 router.get('/', async function(req, res, next) {
   try {
     let songData = await fetchSong(req.body.name);

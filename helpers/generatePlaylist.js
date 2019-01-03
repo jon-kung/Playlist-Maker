@@ -37,13 +37,11 @@ async function generateToken() {
 async function generatePlaylist(artistID, songID) {
   try {
     let token = await generateToken();
-    // In options, we'll build the query string with the songID/artistID
     const options = {
       url: 'https://api.spotify.com/v1/recommendations',
       headers: {
         Authorization: 'Bearer ' + token
       },
-      //"?market=US&seed_artists=4NHQUGzhtTLFvgF5SZesLK&seed_tracks=0c6xIDDpzE81m2q797ordA&min_energy=0.4&min_popularity=50"
       qs: {
         market: 'US',
         seed_artists: artistID,
