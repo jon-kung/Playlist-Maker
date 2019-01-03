@@ -59,8 +59,7 @@ async function generatePlaylist(artistID, songID) {
       return { message: 'Sorry, no tracks found' };
     }
     //console.log(`Inside fetchSimilarSongs results -----`, result);
-
-    // Here we parse the result...to return [{song, artist}, etc]
+    // Here we parse the result to return [{song, artist}, etc]
     let playlist = result.tracks.map(function(track) {
       return {
         song: track.name,
@@ -75,7 +74,7 @@ async function generatePlaylist(artistID, songID) {
   }
 }
 
-generatePlaylist('1uNFoZAHBGtllmzznpCI3s', '0pwYLVXVknPSGUQb39cePC');
+//generatePlaylist('1uNFoZAHBGtllmzznpCI3s', '0pwYLVXVknPSGUQb39cePC');
 
 // "songData": {
 //   "name": "As Long As You Love Me",

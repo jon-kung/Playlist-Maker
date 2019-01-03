@@ -42,7 +42,7 @@ async function fetchSong(songName) {
       headers: {
         Authorization: 'Bearer ' + token
       },
-      qs: { q: songName, type: 'track', limit: 1 },
+      qs: { q: songName, type: 'track,artist', limit: 1 },
       json: true
     };
     let result = await request.get(options);

@@ -11,19 +11,10 @@ const generatePlaylist = require('../helpers/generatePlaylist');
 router.get('/', async function(req, res, next) {
   try {
     let songData = await fetchSong(req.body.name);
-    return res.json({ songData });
-  } catch (err) {
-    err.status = 400;
-    return next(err);
-  }
-});
-
-// This route should return a playlist based off the '/song' route we created earlier
-router.get('/playlist', async function(req, res, next) {
-  try {
+    // once we get songData we can pass artistID/songID to generatePlaylist
     let playlistData = await generatePlaylist(
-      req.body.artistID,
-      req.body.songID
+      songData.artistID,
+      songData.songID
     );
     return res.json(playlistData);
   } catch (err) {
