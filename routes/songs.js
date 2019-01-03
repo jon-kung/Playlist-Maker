@@ -4,9 +4,9 @@ const express = require('express');
 const router = express.Router();
 const APIError = require('../helpers/APIError');
 const fetchSong = require('../helpers/fetchSong');
-const fetchSimiliarSongs = require('../helpers/fetchSimilarSongs');
+const generatePlaylist = require('../helpers/generatePlaylist');
 
-// This get SONG route should return json displaying {song: name, artist, id}
+// This get SONG route should return json displaying {song: name, songID, artist, artistID}
 // Currently works but more accurate when both song name and artist are passed
 router.get('/', async function(req, res, next) {
   try {
@@ -21,7 +21,7 @@ router.get('/', async function(req, res, next) {
 // This route should return a playlist based off the '/song' route we created earlier
 router.get('/playlist', async function(req, res, next) {
   try {
-    let playlistData = await fetchSimiliarSongs(
+    let playlistData = await generatePlaylist(
       req.body.artistID,
       req.body.songID
     );

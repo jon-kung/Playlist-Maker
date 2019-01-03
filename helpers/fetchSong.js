@@ -50,7 +50,7 @@ async function fetchSong(songName) {
     if (result.tracks.items.length === 0) {
       return { message: 'Sorry, no tracks found' };
     }
-    // Here we parse the result...
+    // Here we parse the result to return {name, songID, artist, artistID}
     let name = result.tracks.items[0].name;
     let songID = result.tracks.items[0].id;
     let artist = result.tracks.items[0].artists[0].name;

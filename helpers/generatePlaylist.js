@@ -34,7 +34,7 @@ async function generateToken() {
 // We will hit this endpoint: GET https://api.spotify.com/v1/recommendations
 // Create a playlist-style listening experience based on seed artists, tracks and genres.
 
-async function fetchSimiliarSongs(artistID, songID) {
+async function generatePlaylist(artistID, songID) {
   try {
     let token = await generateToken();
     // In options, we'll build the query string with the songID/artistID
@@ -62,7 +62,11 @@ async function fetchSimiliarSongs(artistID, songID) {
 
     // Here we parse the result...to return [{song, artist}, etc]
     let playlist = result.tracks.map(function(track) {
-      return { song: track.name, artist: track.artists[0].name };
+      return {
+        song: track.name,
+        artist: track.artists[0].name,
+        albumIMG: track.album.images[2].url
+      };
     });
     console.log(playlist);
     return playlist;
@@ -71,7 +75,7 @@ async function fetchSimiliarSongs(artistID, songID) {
   }
 }
 
-fetchSimiliarSongs('1uNFoZAHBGtllmzznpCI3s', '0pwYLVXVknPSGUQb39cePC');
+generatePlaylist('1uNFoZAHBGtllmzznpCI3s', '0pwYLVXVknPSGUQb39cePC');
 
 // "songData": {
 //   "name": "As Long As You Love Me",
@@ -79,4 +83,4 @@ fetchSimiliarSongs('1uNFoZAHBGtllmzznpCI3s', '0pwYLVXVknPSGUQb39cePC');
 //   "artist": "Justin Bieber",
 //   "artistID": "1uNFoZAHBGtllmzznpCI3s"
 
-module.exports = fetchSimiliarSongs;
+module.exports = generatePlaylist;
