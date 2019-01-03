@@ -10,7 +10,7 @@ const generatePlaylist = require('../helpers/generatePlaylist');
 // then passes the artistID+songID to generate a playlist [{song, artist, albumIMG}]
 router.get('/', async function(req, res, next) {
   try {
-    let songData = await fetchSong(req.body.name);
+    let songData = await fetchSong(req.query.name);
     // once we get songData we can pass artistID/songID to generatePlaylist
     let playlistData = await generatePlaylist(
       songData.artistID,
