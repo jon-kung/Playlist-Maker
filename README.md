@@ -8,4 +8,6 @@ Once authorized, we can then hit Spotify's WEB API to find the first song result
 
 Example: https://jons-playlist-maker.herokuapp.com/song?name=yellow%20coldplay
 
+- Note spaces between the search term are separated by %20 or +
+
 Should return a JSON array of songs, artists, and album IMG.

@@ -16,7 +16,11 @@ router.get('/', async function(req, res, next) {
       songData.artistID,
       songData.songID
     );
-    return res.json(playlistData);
+    let info = `Playlist created based off of ${songData.name} by ${
+      songData.artist
+    }.`;
+    console.log(info);
+    return res.json({ info: info, playlist: playlistData });
   } catch (err) {
     err.status = 400;
     return next(err);

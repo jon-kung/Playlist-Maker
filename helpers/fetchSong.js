@@ -33,16 +33,16 @@ async function generateToken() {
 
 // fetchSong will first need an auth token, so we will first generateToken()
 // and then take the user's search input to hit the WEB API for song results
-async function fetchSong(songName) {
+async function fetchSong(searchTerm) {
   try {
     let token = await generateToken();
-    // In options, we build the query string with the songName
+    // In options, we build the query string with the searchTerm
     const options = {
       url: 'https://api.spotify.com/v1/search',
       headers: {
         Authorization: 'Bearer ' + token
       },
-      qs: { q: songName, type: 'track,artist', limit: 1 },
+      qs: { q: searchTerm, type: 'track,artist', limit: 1 },
       json: true
     };
     let result = await request.get(options);
