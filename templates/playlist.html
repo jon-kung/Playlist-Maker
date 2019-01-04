@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1 class='text-center'>Playlist created based off of {{songData.name}} by {{songData.artist}}.</h1>
+
+<ul class="list-group text-center">
+  {% for track in playlistData %}
+  <div>
+    <li class="list-group-item text-center"><img src={{track.albumIMG}}></img> <p> {{ track.song }} by {{ track.artist }}</p> </li>
+  </div> 
+  {% endfor %}
+</ul>
+
+{% endblock %}

@@ -16,6 +16,11 @@ const client_id = '44c0fcd3660644a68435d11d4f484f7d'; // Your client id
 const client_secret = SECRET; // Your secret
 
 const app = express();
+const nunjucks = require('nunjucks');
+nunjucks.configure('templates', {
+  autoescape: true,
+  express: app
+});
 
 // allow connections to all routes from any browser
 app.use(cors());
@@ -23,6 +28,11 @@ app.use(cors());
 //allow both form-encoded and json body parsing
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+/*** Loads the home page and search bar */
+app.get('/', async function(req, res, next) {
+  return res.render('base.html');
+});
 
 /*********** ROUTES ************/
 const songRoutes = require('../routes/songs');

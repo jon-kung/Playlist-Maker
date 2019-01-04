@@ -65,7 +65,7 @@ async function generatePlaylist(artistID, songID) {
         albumIMG: track.album.images[2].url
       };
     });
-    console.log(playlist);
+    //console.log(playlist);
     return playlist;
   } catch (error) {
     console.log(error);
