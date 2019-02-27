@@ -1,8 +1,6 @@
 // Song routes
-
 const express = require('express');
 const router = express.Router();
-const APIError = require('../helpers/APIError');
 const fetchSong = require('../helpers/fetchSong');
 const generatePlaylist = require('../helpers/generatePlaylist');
 
